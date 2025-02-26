@@ -69,14 +69,23 @@ contract EMS is Ownable {
         _;
     }
 
-    // Modifier To Check If The Caller Is Auditor/
-    modifier isAuditor(address _userAddress) {
-        require(
-            users[_userAddress].userRole == UserRole.Auditor,
-            "User is not an auditor"
-        );
-        _;
-    }
+    // // Modifier To Check If The Caller Is Auditor/
+    // modifier isAuditor(address _userAddress) {
+    //     require(
+    //         users[_userAddress].userRole == UserRole.Auditor,
+    //         "User is not an auditor"
+    //     );
+    //     _;
+    // }
+
+    // // Modifier To Check If The Caller Is Auditor/
+    // modifier isGuestUser(address _userAddress) {
+    //     require(
+    //         users[_userAddress].userRole == UserRole.Guest,
+    //         "User is not an auditor"
+    //     );
+    //     _;
+    // }
 
     // Modifier to check if the caller is the assigned auditor for a case
     modifier onlyAssignedUser(address _userAddress, uint _caseNumber) {
@@ -215,6 +224,16 @@ contract EMS is Ownable {
         return user.assignedCaseNumbers;
     }
 
+    // Function to check if an address is an auditor
+    function isAuditor(address _userAddress) external view returns (bool) {
+        return users[_userAddress].userRole == UserRole.Auditor;
+    }
+
+    // Function to check if an address is an auditor
+    function isGuestUser(address _userAddress) external view returns (bool) {
+        return users[_userAddress].userRole == UserRole.Guest;
+    }
+
     //User Functions
     //Structure
     //Case
@@ -290,7 +309,6 @@ contract EMS is Ownable {
     )
         external
         view
-        isAssignedAuditor(msg.sender, _caseNumber)
         onlyAssignedUser(msg.sender, _caseNumber)
         returns (uint, string memory, uint, uint, CaseStatus)
     {
@@ -342,7 +360,6 @@ contract EMS is Ownable {
     )
         external
         view
-        isAssignedAuditor(msg.sender, _caseNumber)
         onlyAssignedUser(msg.sender, _caseNumber)
         returns (string[] memory, string[] memory)
     {

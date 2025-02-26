@@ -5,7 +5,10 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.22.19"
+    "autoprefixer": "^10.4.20",
+    "hardhat": "^2.22.19",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.2.0",
