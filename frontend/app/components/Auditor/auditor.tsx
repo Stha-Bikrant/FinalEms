@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useEMSContext } from "@/app/context/EMSContext";
 
+
 export default function AuditorPanel() {
   const { contract } = useEMSContext();
   const [caseNumber, setCaseNumber] = useState("");

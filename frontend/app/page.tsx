@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const MainPage: React.FC = () => {
   const { userAuth, connectWallet, account } = useEMSContext();
+  console.log("User:",userAuth)
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
